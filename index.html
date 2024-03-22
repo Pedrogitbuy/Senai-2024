@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Gerenciamento de Tarefas</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Sistema de Gerenciamento de Tarefas</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto">
+        <div>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><button>Home</button></a>
+        </li>
+      </div>
+      <div>
+        <li class="nav-item">
+          <a class="nav-link" href="#loginModal" data-toggle="modal"><button>Login</button></a>
+        </li>
+      </div>
+      <div>
+        <li class="nav-item">
+          <a class="nav-link" href="view_tasks.html"><button>Visualizador de Tarefas</button></a>
+        </li>
+      </div>
+      <div>
+        <li class="nav-item">
+          <a class="nav-link" href="new_task.html"><button>Nova Tarefa</button></a>
+        </li>
+      </div>
+      <div>
+        <li class="nav-item">
+          <a class="nav-link" href="contato.html"><button>Contato</button></a>
+        </li>
+      </div>
+      </ul>
+    </div>
+  </nav>
+</div>
+    </header>
+  <!-- Home Page -->
+  <div class="container mt-5">
+    <div class="jumbotron">
+      <h1 class="display-4">Bem-vindo ao Sistema de Gerenciamento de Tarefas</h1>
+      <p class="lead" id="welcomeMessage"></p>
+      <img src="https://img.freepik.com/vetores-premium/design-de-ilustracao-de-imagens-de-logotipo-de-tecnologia_600494-197.jpg" alt="Imagem de Perfil" id="profileImage" class="profile-img">
+      <h2>"Descubra o poder da simplicidade e da eficiência com nosso novo sistema operacional - sua jornada digital nunca foi tão fluida e intuitiva!"</h2>
+    </div>
+  </div>
+</main>
+
+  <!-- Tela de Login - Modal -->
+  <div id="loginModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Formulário de login -->
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="username">Usuário:</label>
+              <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+              <label for="password">Senha:</label>
+              <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

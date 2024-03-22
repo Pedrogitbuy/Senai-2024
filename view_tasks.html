@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Tarefas</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    h1 {
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+
+    .list-group-item {
+      background-color: #fff;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      position: relative; /* Adicionado */
+    }
+
+    .list-group-item:hover {
+      background-color: #f1f1f1;
+    }
+
+    .list-group-item:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    .list-group-item .badge {
+      float: right;
+      background-color: #007bff;
+    }
+
+    .btn-action {
+      margin-left: 10px;
+    }
+
+    /* Adicionado */
+    .btn-group {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1>Visualizar Tarefas</h1>
+    <ul id="taskList" class="list-group">
+      <!-- As tarefas serão adicionadas aqui dinamicamente -->
+    </ul>
+  </div>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Função para carregar e exibir as tarefas do armazenamento local
+    function loadTasks() {
+      var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+      var taskList = document.getElementById('taskList');
+      taskList.innerHTML = ''; // Limpar a lista antes de adicionar as tarefas
+
+      tasks.forEach(function(task, index){
+        var listItem = document.createElement('li');
+        listItem.className = 'list-group-item';
+        listItem.innerHTML = '<span class="badge badge-primary">' + (index + 1) + '</span>' + 
+                              '<span><strong>Descrição:</strong> ' + task.description + '</span>' + 
+                              '<span class="ml-3"><strong>Data de Vencimento:</strong> ' + task.dueDate + '</span>' + 
+                              '<span class="ml-3"><strong>Status:</strong> ' + task.status + '</span>' +
+                              '<div class="btn-group">' + // Adicionado
+                              '<button class="btn btn-danger btn-action" onclick="deleteTask(' + index + ')">Excluir</button>' +
+                              '<button class="btn btn-primary btn-action" onclick="updateTask(' + index + ')">Atualizar</button>' +
+                              '</div>'; // Adicionado
+        taskList.appendChild(listItem);
+      });
+    }
+
+    // Função para excluir uma tarefa
+    function deleteTask(index) {
+      var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.splice(index, 1); // Remove a tarefa do array
+      localStorage.setItem('tasks', JSON.stringify(tasks)); // Atualiza o armazenamento local
+      loadTasks(); // Recarrega as tarefas na lista
+    }
+
+    // Função para atualizar uma tarefa
+    function updateTask(index) {
+      var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      // Aqui você pode implementar a lógica para atualizar a tarefa
+      // Por exemplo, você pode abrir um modal de edição com os detalhes da tarefa selecionada
+      // Depois de atualizar a tarefa, você pode salvá-la de volta no armazenamento local e recarregar as tarefas
+      console.log('Atualizar tarefa com o índice:', index);
+    }
+
+    // Chamar a função para carregar e exibir as tarefas quando a página for carregada
+    window.onload = loadTasks;
+  </script>
+</body>
+</html>
